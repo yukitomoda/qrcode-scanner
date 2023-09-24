@@ -1,4 +1,5 @@
 <script>
+import ErrorView from './ErrorView.client.vue';
 import ResultView from './ResultView.client.vue';
 
 
@@ -50,7 +51,7 @@ export default {
       this.result = '';
     }
   },
-  components: { ResultView }
+  components: { ResultView, ErrorView }
 }
 </script>
 
@@ -58,11 +59,13 @@ export default {
   <div @paste="pasteImage">
     <div>
       Paste image here...
+      <img :id="targetId">
     </div>
-    <img :id="targetId">
     <div>
       <ResultView :result="result"></ResultView>
     </div>
-    <div v-show="error">error: <span>{{ error }}</span></div>
+    <div>
+      <ErrorView :error="error"></ErrorView>
+    </div>
   </div>
 </template>
