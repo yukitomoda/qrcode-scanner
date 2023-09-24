@@ -1,11 +1,9 @@
 name: generate-pages
 
 on:
-  workflow_run:
-    workflows: 
-      - merge-changes-to-gh-pages
-    types:
-      - completed
+  push:
+    branches: [ "master" ]
+    
 jobs:
   generate-pages:
     permissions:
@@ -27,17 +25,11 @@ jobs:
         run: |
           git config --local user.email "${{ vars.PAGES_AUTO_GENERATOR_GIT_USER_EMAIL }}"
           git config --local user.name "${{ vars.PAGES_AUTO_GENERATOR_GIT_USER_NAME }}"
-      - name: generate pages
-        run: npm run generate
-      - name: Commit files
+      - name: merge from origin/master
+        run: git merge -X theirs origin/master
+      - name: Push merged files
         run: |
-          if [[ 0 < $(git status -s ./output/public | wc -l) ]]; then 
-            git add ./.output/public
-            git commit -m "auto: generate pages" -a
-            git pull
-            git push origin gh-pages
-          else
-            echo No files changed.
-          fi
+          git pull
+          git push origin gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
