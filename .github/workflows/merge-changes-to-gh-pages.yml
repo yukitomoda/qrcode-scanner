@@ -1,4 +1,4 @@
-name: generate-pages
+name: merge-changes-to-gh-pages
 
 on:
   push:
