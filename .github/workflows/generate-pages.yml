@@ -20,13 +20,13 @@ jobs:
           node-version: 20.x
           cache: 'npm'
       - run: npm ci
-      - name: merge from origin/master
-        run: git merge origin/master
-      - run: npm run generate
       - name: git setting
         run: |
           git config --local user.email "${{ vars.PAGES_AUTO_GENERATOR_GIT_USER_EMAIL }}"
           git config --local user.name "${{ vars.PAGES_AUTO_GENERATOR_GIT_USER_NAME }}"
+      - name: merge from origin/master
+        run: git merge origin/master
+      - run: npm run generate
       - name: Commit files
         run: |
           git add ./dist
