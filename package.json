@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "qrode-scanner",
   "private": true,
   "type": "module",
   "scripts": {
