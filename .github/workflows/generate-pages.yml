@@ -36,7 +36,7 @@ jobs:
         run: npm run generate
       - name: Commit files
         run: |
-          git add ./dist
+          git add ./.output/public
           git commit -m "auto: generate pages" -a
       - name: Push pages
         run: |
