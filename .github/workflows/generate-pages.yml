@@ -31,7 +31,7 @@ jobs:
         run: npm run generate
       - name: Commit files
         run: |
-          if [[ 0 < $(git status -s ./output/public | wc -l) ]]; then 
+          if [[ 0 < $(git status -s ./.output/public | wc -l) ]]; then 
             git add ./.output/public
             git commit -m "auto: generate pages" -a
             git pull
