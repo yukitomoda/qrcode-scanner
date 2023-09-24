@@ -20,8 +20,8 @@ jobs:
           node-version: 20.x
           cache: 'npm'
       - run: npm ci
-      - name: merge from master
-        run: git merge master
+      - name: merge from origin/master
+        run: git merge origin/master
       - run: npm run generate
       - name: git setting
         run: |
