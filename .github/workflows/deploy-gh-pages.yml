@@ -3,8 +3,6 @@ on:
   workflow_run:
     workflows: 
       - generate-pages
-    branches: 
-      - gh-pages
     types:
       - completed
 permissions:
