@@ -25,7 +25,7 @@ jobs:
           git config --local user.email "${{ vars.PAGES_AUTO_GENERATOR_GIT_USER_EMAIL }}"
           git config --local user.name "${{ vars.PAGES_AUTO_GENERATOR_GIT_USER_NAME }}"
       - name: merge from origin/master
-        run: git merge origin/master
+        run: git merge -X theirs origin/master
       - run: npm run generate
       - name: Commit files
         run: |
