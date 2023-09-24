@@ -19,7 +19,11 @@ export default {
 
 <template>
   <a v-if="this.isUrlForm" :href="this.result" target="_blank">{{ this.result }}</a>
-  <span v-else>{{ this.result }}</span>
+  <span v-else class="result-text">{{ this.result }}</span>
 </template>
 
-<style scoped></style>
+<style scoped>
+.result-text {
+  color: #1700af;
+}
+</style>
